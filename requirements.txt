@@ -6,3 +6,4 @@ gdown
 joblib
 tensorflow
 PyPDF2
+python-docx
