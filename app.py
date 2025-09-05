@@ -3,14 +3,30 @@ import pickle
 import re, string
 from PyPDF2 import PdfReader
 import docx
-encoder = pickle.load(open("encoder.pkl", "rb"))
 
-# -------------------
-# Load model & vectorizer
-# -------------------
+import gdown
+import os
+encoder = pickle.load(open("encoder.pkl", "rb"))
+def download_from_drive(file_id, output):
+    if not os.path.exists(output): 
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, output, quiet=False)
+
+# File IDs from Google Drive
+clf_id = "1DW0kRFJUSFHqvwT5b9u3x-4SECFuoly5"
+tfidf_id = "1owK81t0COpWhw3QkOBHLBt3sHlb08BD4"
+encoder_id = "1BF7iEh_cfOGbkGw6NyWdge3yk_MDKoVn"
+
+# Download files
+download_from_drive(clf_id, "clf.pkl")
+download_from_drive(tfidf_id, "tfidf.pkl")
+download_from_drive(encoder_id, "encoder.pkl")
+
+# Load them
+import pickle
 model = pickle.load(open("clf.pkl", "rb"))
 tfidf = pickle.load(open("tfidf.pkl", "rb"))
-encoder = pickle.load(open("encoder.pkl", "rb"))
+le = pickle.load(open("encoder.pkl", "rb"))
 
 # -------------------
 # Cleaning function
