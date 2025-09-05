@@ -5,3 +5,4 @@ numpy
 gdown
 joblib
 tensorflow
+PyPDF2
