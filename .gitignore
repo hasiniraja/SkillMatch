@@ -1,0 +1,15 @@
+# Ignore model files
+*.pkl
+*.h5
+*.joblib
+
+# Ignore data files
+*.csv
+*.tsv
+*.json
+
+# Ignore cache and virtual env
+__pycache__/
+*.pyc
+.env/
+.venv/
